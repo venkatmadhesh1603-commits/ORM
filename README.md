@@ -1,10 +1,8 @@
-# Ex01 Django ORM Web Application
-## Date: 
+# Ex02 Django ORM Web Application
+## Date:
 
 ## AIM
-To develop a Django application to manage an online food delivery platform like Zomato/Swiggy using Object Relational Mapping (ORM).
-
-
+To develop a Django application to store and retrieve data from a Car Inventory Database using Object Relational Mapping(ORM).
 
 
 ## DESIGN STEPS
@@ -23,39 +21,34 @@ Execute Django admin and create details for 10 books
 
 ## PROGRAM
 ```
-admin.py
-from django.contrib import admin
-from .models import Order   
-
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ('OrderID', 'ItemName', 'OrderQty', 'TotalAmount')
-
-admin.site.register(Order, OrderAdmin)
-
 models.py
 
-from django.db import models
+from django.db import models 
 from django.contrib import admin
-class Order(models.Model):
-    OrderID = models.AutoField(primary_key=True)
-    UserID = models.IntegerField()
-    OrderDate = models.DateField()
-    ItemName = models.CharField(max_length=255)
-    OrderQty = models.IntegerField()
-    UnitPrice = models.DecimalField(max_digits=10, decimal_places=2)
-    TotalAmount = models.DecimalField(max_digits=10, decimal_places=2)
-    DeliveryAddress = models.TextField()
+class Cars_DB (models.Model):
+     Car_name=models.CharField(max_length=20)
+     reg_no=models.IntegerField (primary_key=True)
+     fuel_type=models.CharField(max_length=20)
+     engine_model=models.CharField(max_length=20)
+     insurance_no=models.IntegerField()
+class Cars_DBAdmin(admin.ModelAdmin):
+     list_display=["Car_name","reg_no","fuel_type","engine_model","insurance_no"]
 
-    def _str_(self):
-        return f"Order {self.OrderID} - {self.ItemName
+admin.py
+
+from django.contrib import admin
+from .models import Cars_DB,Cars_DBAdmin
+admin.site.register(Cars_DB,Cars_DBAdmin)
 ```
 
 
-
 ## OUTPUT
-![alt text](<Screenshot 2026-05-07 111925.png>)
+
+
+<img width="1013" height="543" alt="Screenshot 2026-05-21 131702" src="https://github.com/user-attachments/assets/27b4754c-c107-4f15-ab09-7d550c02434f" />
+
 
 
 
 ## RESULT
-Thus the program for creating a database using ORM hass been executed successfully
+Thus the program for creating car inventory database database using ORM hass been executed successfully
